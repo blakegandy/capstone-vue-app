@@ -35,7 +35,10 @@
       </div>
       <div class="form-group">
         <label>Are you a Stylist?:</label>
-        <input type="checkbox" class="form-control" v-model="stylist" />
+        <select name="stylist_confirmation">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
       </div>
       <div class="form-group">
         <label>Salon:</label>
@@ -62,7 +65,7 @@ export default {
       email: "",
       password: "",
       passwordConfirmation: "",
-      stylist: Boolean,
+      stylist: null,
       salon: "",
       specialty: "",
       errors: [],
@@ -71,9 +74,9 @@ export default {
   methods: {
     submit: function() {
       var params = {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        phoneNumber: this.phoneNumber,
+        first_name: this.firstName,
+        last_name: this.lastName,
+        phone_number: this.phoneNumber,
         email: this.email,
         password: this.password,
         password_confirmation: this.passwordConfirmation,
@@ -84,6 +87,7 @@ export default {
       axios
         .post("/api/users", params)
         .then((response) => {
+          console.log(response.data);
           this.$router.push("/login");
         })
         .catch((error) => {
