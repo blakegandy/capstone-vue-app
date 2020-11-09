@@ -5,6 +5,10 @@ import axios from "axios";
 import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
+import AppointmentIndex from "../views/AppointmentIndex.vue";
+import UserIndex from "../views/UserIndex.vue";
+import UserShow from "../views/UserShow.vue";
+import AppointmentEdit from "../views/AppointmentEdit.vue";
 
 axios.defaults.baseURL =
   process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
@@ -28,6 +32,14 @@ const routes = [
   { path: "/signup", name: "signup", component: Signup },
   { path: "/login", name: "login", component: Login },
   { path: "/logout", name: "logout", component: Logout },
+  {
+    path: "/appointments",
+    name: "appointment-index",
+    component: AppointmentIndex,
+  },
+  { path: "/users", name: "users-index", component: UserIndex },
+  { path: "/users/:id", name: "users-show", component: UserShow },
+  { path: "/appointments/:id", name: "appointments-edit", component: AppointmentEdit}
 ];
 
 const router = new VueRouter({
