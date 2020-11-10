@@ -39,7 +39,11 @@ const routes = [
   },
   { path: "/users", name: "users-index", component: UserIndex },
   { path: "/users/:id", name: "users-show", component: UserShow },
-  { path: "/appointments/:id", name: "appointments-edit", component: AppointmentEdit}
+  {
+    path: "/appointments/:id/edit",
+    name: "appointments-edit",
+    component: AppointmentEdit,
+  },
 ];
 
 const router = new VueRouter({

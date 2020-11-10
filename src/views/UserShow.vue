@@ -11,16 +11,41 @@
       <p>Price: {{ product.price }}</p>
       <p>Quantity: {{ product.quantity }}</p>
     </div>
+    <div>
+      <h2>Schedule an Appointment!</h2>
+      <input type="hidden" id="timezone" name="timezone" value="-06:00" />
+      <div class="form-group">
+        <label for="event-time">Date and Time:</label>
+        <input
+          type="datetime-local"
+          id="event-time"
+          min="2020-01-01T00:00"
+          max="2021-12-31T11:59"
+          class="form-control"
+          v-model="newStartsAt"
+        />
+      </div>
+      <div class="form-group">
+        <label>Details:</label>
+        <input type="text" class="form-control" v-model="newDetails" />
+      </div>
+      <button v-on:click="createAppointment()">Create Appointment</button>
+    </div>
   </div>
 </template>
 
 <script>
+import moment from "moment";
 import axios from "axios";
 export default {
   data: function() {
     return {
       user: {},
       products: [],
+      newStylistId: 2,
+      appointments: [],
+      newStartsAt: "",
+      newDetails: "",
     };
   },
   created: function() {
@@ -32,6 +57,20 @@ export default {
       console.log(response.data);
       this.products = response.data;
     });
+  },
+  methods: {
+    createAppointment: function() {
+      var params = {
+        stylist_id: this.newStylistId,
+        client_id: this.newClientId,
+        starts_at: this.newStartsAt,
+        details: this.newDetails,
+      };
+      axios.post("/api/appointments", params).then((response) => {
+        console.log("Success", response.data);
+        this.appointments.push(response.data);
+      });
+    },
   },
 };
 </script>
