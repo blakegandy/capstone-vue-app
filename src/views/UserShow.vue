@@ -5,12 +5,6 @@
     <p>Phone Number: {{ user.phone_number }}</p>
     <p>Salon: {{ user.salon }}</p>
     <p>Specialty: {{ user.specialty }}</p>
-    <div v-for="product in products">
-      <h2>{{ product.name }}</h2>
-      <p>Description: {{ product.description }}</p>
-      <p>Price: {{ product.price }}</p>
-      <p>Quantity: {{ product.quantity }}</p>
-    </div>
     <div>
       <h2>Schedule an Appointment!</h2>
       <input type="hidden" id="timezone" name="timezone" value="-06:00" />
@@ -31,6 +25,15 @@
       </div>
       <button v-on:click="createAppointment()">Create Appointment</button>
     </div>
+    <div v-for="product in user.products">
+      <h2>{{ product.name }}</h2>
+      <p>Description: {{ product.description }}</p>
+      <p>Price: {{ product.price }}</p>
+      <router-link :to="`/products/${product.id}`">More Info</router-link> |
+      <router-link :to="`/products/${product.id}/edit`"
+        >Edit product</router-link
+      >
+    </div>
   </div>
 </template>
 
@@ -50,7 +53,7 @@ export default {
   },
   created: function() {
     axios.get(`/api/users/${this.$route.params.id}`).then((response) => {
-      console.log(response.daxta);
+      console.log(response.data);
       this.user = response.data;
     });
     axios.get("/api/products").then((response) => {

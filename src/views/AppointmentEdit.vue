@@ -1,5 +1,6 @@
 <template>
   <div class="appointments-edit">
+    <router-link to="/appointments">Back</router-link>
     <h1>Edit Your Appointment</h1>
     <div class="form-group">
       <label for="event-time">Date and Time:</label>
@@ -12,12 +13,12 @@
         v-model="formattedStartsAt"
       />
     </div>
-    {{ formattedStartsAt }}
     <div class="form-group">
       <label>Details:</label>
       <input type="text" class="form-control" v-model="appointment.details" />
     </div>
     <button v-on:click="updateAppointment()">Update Appointment</button>
+    <button v-on:click="destroyAppointment()">Cancel Appointment</button>
   </div>
 </template>
 <script>
@@ -49,9 +50,22 @@ export default {
       };
       axios
         .patch(`/api/appointments/${this.appointment.id}`, params)
+        .then((response) => {
+          this.$router.push("/appointments");
+        })
         .catch((error) => {
           this.errors = error.response.data.errors;
         });
+    },
+    destroyAppointment: function() {
+      if (confirm("Are you sure you want to cancel this appointment?")) {
+        axios
+          .delete(`/api/appointments/${this.appointment.id}`)
+          .then((response) => {
+            console.log("Success", response.data);
+            this.$router.push("/appointments");
+          });
+      }
     },
   },
 };

@@ -7,8 +7,8 @@
         Client: {{ appointment.client }}
         {{ appointment.client }}
       </p>
-      <p>Client Contact: {{ appointment.stylist.phone_number }}</p>
-      <p>Date and Time: {{ appointment.starts_at }}</p>
+      <p>Client Contact: {{ appointment.client.phone_number }}</p>
+      <p>Date and Time: {{ formatDate(appointments.starts_at) }}</p>
       <p>Details: {{ appointment.details }}</p>
       <router-link :to="`/appointments/${appointment.id}/edit`"
         >Edit Appointment</router-link
@@ -31,6 +31,11 @@ export default {
       console.log(response.data);
       this.appointments = response.data;
     });
+  },
+  methods: {
+    formatDate: function() {
+      return moment().format("LLL");
+    },
   },
 };
 </script>
