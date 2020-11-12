@@ -11,6 +11,7 @@ import UserShow from "../views/UserShow.vue";
 import AppointmentEdit from "../views/AppointmentEdit.vue";
 import ProductEdit from "../views/ProductEdit.vue";
 import ProductShow from "../views/ProductShow.vue";
+import ProductNew from "../views/ProductNew.vue";
 
 axios.defaults.baseURL =
   process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
@@ -55,6 +56,11 @@ const routes = [
     path: "/products/:id",
     name: "products-show",
     component: ProductShow,
+  },
+  {
+    path: "/products/new",
+    name: "products-new",
+    component: ProductNew,
   },
 ];
 

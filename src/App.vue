@@ -7,7 +7,8 @@
       <router-link to="/login">Login</router-link> |
       <router-link to="/logout">Logout</router-link> |
       <router-link to="/appointments">Appointments</router-link> |
-      <router-link to="/users">Stylists</router-link>
+      <router-link to="/users">Stylists</router-link> |
+      <router-link to="/products/new">New Product</router-link>
     </div>
     <router-view />
   </div>
