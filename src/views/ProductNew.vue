@@ -31,6 +31,7 @@ import axios from "axios";
 export default {
   data: function() {
     return {
+      imageURL: "",
       name: "",
       description: "",
       price: "",
@@ -41,6 +42,7 @@ export default {
   methods: {
     submit: function() {
       var params = {
+        imageURL: this.image_url,
         name: this.name,
         description: this.description,
         price: this.price,

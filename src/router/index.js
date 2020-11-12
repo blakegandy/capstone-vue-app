@@ -8,6 +8,7 @@ import Logout from "../views/Logout.vue";
 import AppointmentIndex from "../views/AppointmentIndex.vue";
 import UserIndex from "../views/UserIndex.vue";
 import UserShow from "../views/UserShow.vue";
+import UserEdit from "../views/UserEdit.vue";
 import AppointmentEdit from "../views/AppointmentEdit.vue";
 import ProductEdit from "../views/ProductEdit.vue";
 import ProductShow from "../views/ProductShow.vue";
@@ -42,6 +43,11 @@ const routes = [
   },
   { path: "/users", name: "users-index", component: UserIndex },
   { path: "/users/:id", name: "users-show", component: UserShow },
+  {
+    path: "/users/:id/edit",
+    name: "users-edit",
+    component: UserEdit,
+  },
   {
     path: "/appointments/:id/edit",
     name: "appointments-edit",

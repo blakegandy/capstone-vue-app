@@ -3,9 +3,9 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <router-link to="/signup">Sign Up</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/logout">Logout</router-link> |
+      <router-link v-if="!isLoggedIn()" to="/signup">Sign Up</router-link> |
+      <router-link v-if="!isLoggedIn()" to="/login">Login</router-link> |
+      <router-link v-if="isLoggedIn()" to="/logout">Logout</router-link> |
       <router-link to="/appointments">Appointments</router-link> |
       <router-link to="/users">Stylists</router-link> |
       <router-link to="/products">New Product</router-link>

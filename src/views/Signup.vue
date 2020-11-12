@@ -48,6 +48,10 @@
         <label>Specialty:</label>
         <input type="text" class="form-control" v-model="specialty" />
       </div>
+      <div class="form-group">
+        <label>Profile Picture</label>
+        <input type="text" class="form-control" v-model="imageURL" />
+      </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
   </div>
@@ -68,6 +72,7 @@ export default {
       stylist: null,
       salon: "",
       specialty: "",
+      imageURL: "",
       errors: [],
     };
   },
@@ -83,6 +88,7 @@ export default {
         stylist: this.stylist,
         salon: this.salon,
         specialty: this.specialty,
+        image_url: this.imageURL
       };
       axios
         .post("/api/users", params)
