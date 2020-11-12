@@ -8,7 +8,7 @@
       <router-link to="/logout">Logout</router-link> |
       <router-link to="/appointments">Appointments</router-link> |
       <router-link to="/users">Stylists</router-link> |
-      <router-link to="/products/new">New Product</router-link>
+      <router-link to="/products">New Product</router-link>
     </div>
     <router-view />
   </div>
@@ -36,3 +36,16 @@
   color: #42b983;
 }
 </style>
+
+<script>
+export default {
+  methods: {
+    isLoggedIn: function() {
+      return localStorage.getItem("jwt");
+    },
+    getUserId: function() {
+      return parseInt(localStorage.getItem("user_id"));
+    },
+  },
+};
+</script>

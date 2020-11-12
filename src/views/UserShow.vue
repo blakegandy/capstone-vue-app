@@ -30,7 +30,9 @@
       <p>Description: {{ product.description }}</p>
       <p>Price: {{ product.price }}</p>
       <router-link :to="`/products/${product.id}`">More Info</router-link> |
-      <router-link :to="`/products/${product.id}/edit`"
+      <router-link
+        v-if="product.user_id === $parent.getUserId()"
+        :to="`/products/${product.id}/edit`"
         >Edit product</router-link
       >
     </div>
@@ -45,7 +47,6 @@ export default {
     return {
       user: {},
       products: [],
-      newStylistId: 2,
       appointments: [],
       newStartsAt: "",
       newDetails: "",
@@ -64,7 +65,7 @@ export default {
   methods: {
     createAppointment: function() {
       var params = {
-        stylist_id: this.newStylistId,
+        stylist_id: this.user.id,
         client_id: this.newClientId,
         starts_at: this.newStartsAt,
         details: this.newDetails,
@@ -72,6 +73,7 @@ export default {
       axios.post("/api/appointments", params).then((response) => {
         console.log("Success", response.data);
         this.appointments.push(response.data);
+        this.$router.push("/appointments");
       });
     },
   },
