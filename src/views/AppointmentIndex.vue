@@ -5,7 +5,7 @@
       <div v-if="appointment.stylist">
         <h2>
           Stylist: {{ appointment.stylist.first_name }}
-          {{ appointments.stylist.last_name }}
+          {{ appointment.stylist.last_name }}
         </h2>
         <p>Stylist Contact: {{ appointment.stylist.phone_number }}</p>
         <p>Date and Time: {{ formatDate(appointments.starts_at) }}</p>

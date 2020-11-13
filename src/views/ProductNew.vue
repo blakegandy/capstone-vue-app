@@ -53,7 +53,7 @@ export default {
         .post("/api/products", params)
         .then((response) => {
           console.log(response.data);
-          this.$router.push("/");
+          this.$router.push(`/users/${this.$parent.getUserId()}`);
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

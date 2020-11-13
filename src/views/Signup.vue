@@ -35,16 +35,16 @@
       </div>
       <div class="form-group">
         <label>Are you a Stylist?:</label>
-        <select name="stylist_confirmation">
+        <select v-model="stylist" name="stylist_confirmation">
           <option value="true">Yes</option>
           <option value="false">No</option>
         </select>
       </div>
-      <div class="form-group">
+      <div v-if="stylist === 'true'" class="form-group">
         <label>Salon:</label>
         <input type="text" class="form-control" v-model="salon" />
       </div>
-      <div class="form-group">
+      <div v-if="stylist === 'true'" class="form-group">
         <label>Specialty:</label>
         <input type="text" class="form-control" v-model="specialty" />
       </div>
@@ -88,7 +88,7 @@ export default {
         stylist: this.stylist,
         salon: this.salon,
         specialty: this.specialty,
-        image_url: this.imageURL
+        image_url: this.imageURL,
       };
       axios
         .post("/api/users", params)

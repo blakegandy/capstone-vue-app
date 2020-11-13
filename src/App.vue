@@ -8,7 +8,9 @@
       <router-link v-if="isLoggedIn()" to="/logout">Logout</router-link> |
       <router-link to="/appointments">Appointments</router-link> |
       <router-link to="/users">Stylists</router-link> |
-      <router-link to="/products">New Product</router-link>
+      <router-link v-if="isLoggedIn()" :to="`/users/${getUserId()}`"
+        >My Profile</router-link
+      >
     </div>
     <router-view />
   </div>

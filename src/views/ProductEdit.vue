@@ -2,25 +2,25 @@
   <div class="products-edit">
     <div class="form-group">
       <label>Image URL:</label>
-      <input type="text" class="form-control" v-model="imageURL" />
+      <input type="text" class="form-control" v-model="product.image_url" />
     </div>
     <div class="form-group">
       <label>Name:</label>
-      <input type="text" class="form-control" v-model="name" />
+      <input type="text" class="form-control" v-model="product.name" />
     </div>
     <div class="form-group">
       <label>Description:</label>
-      <input type="text" class="form-control" v-model="description" />
+      <input type="text" class="form-control" v-model="product.description" />
     </div>
     <div class="form-group">
       <label>Price:</label>
-      <input type="decimal" class="form-control" v-model="price" />
+      <input type="decimal" class="form-control" v-model="product.price" />
     </div>
     <div class="form-group">
       <label>Quantity:</label>
-      <input type="number" class="form-control" v-model="quantity" />
+      <input type="number" class="form-control" v-model="product.quantity" />
     </div>
-    <button v-on:click="updateProduct()">Update Appointment</button>
+    <button v-on:click="updateProduct()">Update Product</button>
     <button v-on:click="destroyProduct()">Remove Product</button>
   </div>
 </template>
@@ -31,11 +31,6 @@ export default {
     return {
       errors: [],
       product: {},
-      imageURL: "",
-      name: "",
-      description: "",
-      price: "",
-      quantity: "",
     };
   },
   created: function() {
@@ -47,14 +42,14 @@ export default {
   methods: {
     updateProduct: function() {
       var params = {
-        imageURL: this.product.image_url,
+        image_url: this.product.image_url,
         name: this.product.name,
         description: this.product.description,
         price: this.product.price,
         quantity: this.product.quantity,
       };
       axios
-        .patch(`/api/products/${this.appointment.id}`, params)
+        .patch(`/api/products/${this.product.id}`, params)
         .then((response) => {
           this.$router.push(`/product/${this.product.id}`);
         })
@@ -66,7 +61,7 @@ export default {
       if (confirm("Are you sure you want to delete this product?")) {
         axios.delete(`/api/products/${this.product.id}`).then((response) => {
           console.log("Success", response.data);
-          this.$router.push("/users");
+          this.$router.push(`/users/${this.$parent.getUserId()}`);
         });
       }
     },

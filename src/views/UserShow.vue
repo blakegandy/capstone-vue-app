@@ -1,14 +1,19 @@
 <template>
   <div class="users-show">
+    <router-link
+      v-if="user.id === $parent.getUserId()"
+      :to="`/users/${user.id}/edit`"
+      >Edit Profile</router-link
+    >
     <h1>{{ user.first_name }} {{ user.last_name }}</h1>
     <p>Email: {{ user.email }}</p>
     <p>Phone Number: {{ user.phone_number }}</p>
     <p>Salon: {{ user.salon }}</p>
     <p>Specialty: {{ user.specialty }}</p>
     <div>
-      <h2>Schedule an Appointment!</h2>
+      <h2 v-if="user.id != $parent.getUserId()">Schedule an Appointment!</h2>
       <input type="hidden" id="timezone" name="timezone" value="-06:00" />
-      <div class="form-group">
+      <div v-if="user.id != $parent.getUserId()" class="form-group">
         <label for="event-time">Date and Time:</label>
         <input
           type="datetime-local"
@@ -19,11 +24,21 @@
           v-model="newStartsAt"
         />
       </div>
-      <div class="form-group">
+      <div v-if="user.id != $parent.getUserId()" class="form-group">
         <label>Details:</label>
         <input type="text" class="form-control" v-model="newDetails" />
       </div>
-      <button v-on:click="createAppointment()">Create Appointment</button>
+      <button
+        v-if="user.id != $parent.getUserId()"
+        v-on:click="createAppointment()"
+      >
+        Create Appointment
+      </button>
+      <router-link
+        v-if="user.stylist === true && user.id === $parent.getUserId()"
+        to="/products"
+        >New Product</router-link
+      >
     </div>
     <div v-for="product in user.products">
       <h2>{{ product.name }}</h2>
