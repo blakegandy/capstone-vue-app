@@ -51,7 +51,7 @@ export default {
       axios
         .patch(`/api/products/${this.product.id}`, params)
         .then((response) => {
-          this.$router.push(`/product/${this.product.id}`);
+          this.$router.push(`/users/${this.$parent.getUserId()}`);
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

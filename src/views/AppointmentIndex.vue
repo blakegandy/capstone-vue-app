@@ -31,8 +31,19 @@
 </template>
 
 <script>
+import { Calendar } from "@fullcalendar/core";
+import dayGridPlugin from "@fullcalendar/daygrid";
 import moment from "moment";
 import axios from "axios";
+document.addEventListener("DOMContentLoaded", function() {
+  var calendarEl = document.getElementById("calendar");
+
+  var calendar = new Calendar(calendarEl, {
+    plugins: [dayGridPlugin],
+  });
+
+  calendar.render();
+});
 export default {
   data: function() {
     return {
