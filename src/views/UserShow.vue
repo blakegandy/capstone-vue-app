@@ -12,7 +12,6 @@
     <p>Specialty: {{ user.specialty }}</p>
     <div>
       <h2 v-if="user.id != $parent.getUserId()">Schedule an Appointment!</h2>
-      <input type="hidden" id="timezone" name="timezone" value="-06:00" />
       <div v-if="user.id != $parent.getUserId()" class="form-group">
         <label for="event-time">Date and Time:</label>
         <input
@@ -24,6 +23,7 @@
           v-model="newStartsAt"
         />
       </div>
+      {{ newStartsAt }}
       <div v-if="user.id != $parent.getUserId()" class="form-group">
         <label>Details:</label>
         <input type="text" class="form-control" v-model="newDetails" />
@@ -82,7 +82,7 @@ export default {
       var params = {
         stylist_id: this.user.id,
         client_id: this.newClientId,
-        starts_at: this.newStartsAt,
+        starts_at: moment(this.newStartsAt).format(),
         details: this.newDetails,
       };
       axios.post("/api/appointments", params).then((response) => {

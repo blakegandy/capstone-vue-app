@@ -8,7 +8,7 @@
           {{ appointment.stylist.last_name }}
         </h2>
         <p>Stylist Contact: {{ appointment.stylist.phone_number }}</p>
-        <p>Date and Time: {{ formatDate(appointments.starts_at) }}</p>
+        <p>Date and Time: {{ formatDate(appointment.starts_at) }}</p>
         <p>Details: {{ appointment.details }}</p>
         <router-link :to="`/appointments/${appointment.id}/edit`"
           >Edit Appointment</router-link
@@ -20,45 +20,55 @@
           {{ appointment.client.last_name }}
         </h2>
         <p>Client Contact: {{ appointment.client.phone_number }}</p>
-        <p>Date and Time: {{ formatDate(appointments.starts_at) }}</p>
+        <p>Date and Time: {{ formatDate(appointment.starts_at) }}</p>
         <p>Details: {{ appointment.details }}</p>
         <router-link :to="`/appointments/${appointment.id}/edit`"
           >Edit Appointment</router-link
         >
       </div>
     </div>
+    <div id="calendar"></div>
   </div>
 </template>
 
 <script>
-import { Calendar } from "@fullcalendar/core";
-import dayGridPlugin from "@fullcalendar/daygrid";
+// import Calendar from "@fullcalendar/core";
+// import dayGridPlugin from "@fullcalendar/daygrid";
 import moment from "moment";
 import axios from "axios";
-document.addEventListener("DOMContentLoaded", function() {
-  var calendarEl = document.getElementById("calendar");
 
-  var calendar = new Calendar(calendarEl, {
-    plugins: [dayGridPlugin],
-  });
-
-  calendar.render();
-});
 export default {
   data: function() {
     return {
       appointments: [],
+      calendarFormattedEvents: [],
     };
   },
   created: function() {
     axios.get("/api/appointments").then((response) => {
       console.log(response.data);
       this.appointments = response.data;
+      this.calendarFormattedEvents = this.appointments.map((appointment) => {
+        return {
+          title: appointment.client.first_name,
+          start: this.formatDate(appointment.starts_at),
+        };
+      });
+      console.log(this.calendarFormattedEvents);
+      var calendarEl = document.getElementById("calendar");
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: "dayGridMonth",
+        events: this.calendarFormattedEvents,
+      });
+      calendar.render();
     });
   },
+  mounted: function() {
+    document.addEventListener("DOMContentLoaded", function() {});
+  },
   methods: {
-    formatDate: function() {
-      return moment().format("LLL");
+    formatDate: function(date) {
+      return moment(date).format();
     },
   },
 };
