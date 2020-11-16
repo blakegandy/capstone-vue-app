@@ -8,8 +8,8 @@
     <h1>{{ user.first_name }} {{ user.last_name }}</h1>
     <p>Email: {{ user.email }}</p>
     <p>Phone Number: {{ user.phone_number }}</p>
-    <p>Salon: {{ user.salon }}</p>
-    <p>Specialty: {{ user.specialty }}</p>
+    <p v-if="user.stylist === true">Salon: {{ user.salon }}</p>
+    <p v-if="user.stylist === true">Specialty: {{ user.specialty }}</p>
     <div>
       <h2 v-if="user.id != $parent.getUserId()">Schedule an Appointment!</h2>
       <div v-if="user.id != $parent.getUserId()" class="form-group">
