@@ -1,5 +1,6 @@
 <template>
   <div class="appointments-index">
+    <div id="calendar"></div>
     <h2>Appointments</h2>
     <div v-for="appointment in appointments">
       <div v-if="appointment.stylist">
@@ -27,7 +28,6 @@
         >
       </div>
     </div>
-    <div id="calendar"></div>
   </div>
 </template>
 
@@ -49,10 +49,17 @@ export default {
       console.log(response.data);
       this.appointments = response.data;
       this.calendarFormattedEvents = this.appointments.map((appointment) => {
-        return {
-          title: appointment.client.first_name,
-          start: this.formatDate(appointment.starts_at),
-        };
+        if (appointment.client) {
+          return {
+            title: appointment.client.first_name,
+            start: this.formatDate(appointment.starts_at),
+          };
+        } else {
+          return {
+            title: appointment.stylist.first_name,
+            start: this.formatDate(appointment.starts_at),
+          };
+        }
       });
       console.log(this.calendarFormattedEvents);
       var calendarEl = document.getElementById("calendar");
