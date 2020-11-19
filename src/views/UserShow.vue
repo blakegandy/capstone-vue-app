@@ -26,7 +26,9 @@
           <div class="col-md-4 mb-30">
             <div class="project-detail-block">
               <p>
-                <strong class="dark-color">Name:</strong>{{ user.first_name }}
+                <strong class="dark-color">Name:</strong>
+
+                {{ user.first_name }}
                 {{ user.last_name }}
               </p>
 
@@ -129,6 +131,11 @@
                 <div class="shop-item-price">
                   <span>${{ product.price }}</span>
                 </div>
+                <router-link
+                  v-if="product.user_id === $parent.getUserId()"
+                  :to="`/products/edit/${product.id}`"
+                  >Edit Product</router-link
+                >
               </div>
               <!-- Shop item info -->
             </div>

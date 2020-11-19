@@ -15,61 +15,160 @@
       </div>
     </section>
     <!-- End Intro Section -->
-    <form v-on:submit.prevent="submit()">
-      <h1>Signup</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>First Name:</label>
-        <input type="text" class="form-control" v-model="firstName" />
+    <!-- Login Section -->
+    <section id="Pricing" class="ptb ptb-sm-80">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2">
+            <div class="tabs b-lrb-none">
+              <div class="ui-tab-content">
+                <div id="tabs-1" class="plr-0"></div>
+                <div id="tabs-2" class="plr-0">
+                  <h4>Create Account</h4>
+                  <form v-on:submit.prevent="submit()">
+                    <div class="form-field-wrapper">
+                      <label for="signup-name">First Name</label>
+                      <input
+                        type="text"
+                        required=""
+                        placeholder="Enter your first name"
+                        name="signup-name"
+                        id="signup-name"
+                        class="input-sm form-full"
+                        aria-required="true"
+                        v-model="firstName"
+                      />
+                    </div>
+                    <div class="form-field-wrapper">
+                      <label for="signup-name">Last Name</label>
+                      <input
+                        type="name"
+                        required=""
+                        placeholder="Enter your last name"
+                        name="signup-name"
+                        id="signup-name"
+                        class="input-sm form-full"
+                        aria-required="true"
+                        v-model="lastName"
+                      />
+                    </div>
+                    <div class="form-field-wrapper">
+                      <label for="signup-email">Email </label>
+                      <input
+                        type="text"
+                        required=""
+                        placeholder="Enter your email"
+                        name="signup-email"
+                        id="signup-email"
+                        class="input-sm form-full"
+                        aria-required="true"
+                        v-model="email"
+                      />
+                    </div>
+                    <div class="form-field-wrapper">
+                      <label for="login-email">Phone</label>
+                      <input
+                        type="text"
+                        required=""
+                        placeholder="Enter your phone no."
+                        name="signup-phone"
+                        id="signup-phone"
+                        class="input-sm form-full"
+                        aria-required="true"
+                        v-model="phoneNumber"
+                      />
+                    </div>
+                    <div class="form-field-wrapper">
+                      <label for="signup-pass">Choose Password</label>
+                      <input
+                        type="password"
+                        required=""
+                        placeholder="Enter Password"
+                        name="signup-pass"
+                        id="signup-pass"
+                        class="input-sm form-full"
+                        aria-required="true"
+                        v-model="password"
+                      />
+                    </div>
+                    <div class="form-field-wrapper">
+                      <label for="signup-pass">Re-enter Password</label>
+                      <input
+                        type="password"
+                        required=""
+                        placeholder="Enter Re-enter Password"
+                        name="signup-re-pass"
+                        id="signup-re-pass"
+                        class="input-sm form-full"
+                        aria-required="true"
+                        v-model="passwordConfirmation"
+                      />
+                    </div>
+                    <div class="form-field-wrapper">
+                      <label>Are you a Stylist?:</label>
+                      <select v-model="stylist" name="stylist_confirmation">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                      </select>
+                    </div>
+                    <div v-if="stylist === 'true'" class="form-field-wrapper">
+                      <label for="signup-pass">Salon</label>
+                      <input
+                        type="text"
+                        required=""
+                        placeholder="Enter Salon name"
+                        name="signup-re-pass"
+                        id="signup-re-pass"
+                        class="input-sm form-full"
+                        aria-required="true"
+                        v-model="salon"
+                      />
+                    </div>
+                    <div v-if="stylist === 'true'" class="form-field-wrapper">
+                      <label for="signup-pass">Specialty</label>
+                      <input
+                        type="text"
+                        required=""
+                        placeholder="Enter Specialty"
+                        name="signup-re-pass"
+                        id="signup-re-pass"
+                        class="input-sm form-full"
+                        aria-required="true"
+                        v-model="specialty"
+                      />
+                    </div>
+                    <div class="form-field-wrapper">
+                      <label>Profile Picture URL</label>
+                      <input
+                        type="text"
+                        required=""
+                        placeholder="Enter Image URL here"
+                        name="signup-re-pass"
+                        id="signup-re-pass"
+                        class="input-sm form-full"
+                        aria-required="true"
+                        v-model="imageURL"
+                      />
+                    </div>
+                    <button
+                      name="submit"
+                      id="form-submit"
+                      type="submit"
+                      class="btn btn-md btn-black"
+                      value="Submit"
+                    >
+                      Signup Now
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label>Last Name:</label>
-        <input type="text" class="form-control" v-model="lastName" />
-      </div>
-      <div class="form-group">
-        <label>Phone Number:</label>
-        <input type="text" class="form-control" v-model="phoneNumber" />
-      </div>
-      <div class="form-group">
-        <label>Email:</label>
-        <input type="email" class="form-control" v-model="email" />
-      </div>
-      <div class="form-group">
-        <label>Password:</label>
-        <input type="password" class="form-control" v-model="password" />
-      </div>
-      <div class="form-group">
-        <label>Password confirmation:</label>
-        <input
-          type="password"
-          class="form-control"
-          v-model="passwordConfirmation"
-        />
-      </div>
-      <div class="form-group">
-        <label>Are you a Stylist?:</label>
-        <select v-model="stylist" name="stylist_confirmation">
-          <option value="true">Yes</option>
-          <option value="false">No</option>
-        </select>
-      </div>
-      <div v-if="stylist === 'true'" class="form-group">
-        <label>Salon:</label>
-        <input type="text" class="form-control" v-model="salon" />
-      </div>
-      <div v-if="stylist === 'true'" class="form-group">
-        <label>Specialty:</label>
-        <input type="text" class="form-control" v-model="specialty" />
-      </div>
-      <div class="form-group">
-        <label>Profile Picture</label>
-        <input type="text" class="form-control" v-model="imageURL" />
-      </div>
-      <input type="submit" class="btn btn-primary" value="Submit" />
-    </form>
+    </section>
   </div>
+  <!-- End Login Section -->
 </template>
 
 <script>

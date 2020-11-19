@@ -15,6 +15,46 @@
       </div>
     </section>
     <!-- End Intro Section -->
+    <div id="tabs-1" class="plr-0">
+      <h4>Customer Login</h4>
+      <form v-on:submit.prevent="submit()">
+        <div class="form-field-wrapper">
+          <label for="login-email">Email address</label>
+          <input
+            type="email"
+            required=""
+            placeholder="Enter your Email"
+            name="login-email"
+            id="login-email"
+            class="input-sm form-full"
+            aria-required="true"
+            v-model="email"
+          />
+        </div>
+        <div class="form-field-wrapper">
+          <label for="login-pass">Password</label>
+          <input
+            type="password"
+            required=""
+            placeholder="Enter your Password"
+            name="login-pass"
+            id="login-pass"
+            class="input-sm form-full"
+            aria-required="true"
+            v-model="password"
+          />
+          <button
+            name="submit"
+            id="form-submit"
+            type="submit"
+            class="btn btn-md btn-black"
+            value="Submit"
+          >
+            Log In
+          </button>
+        </div>
+      </form>
+    </div>
     <form v-on:submit.prevent="submit()">
       <h1>Login</h1>
       <ul>

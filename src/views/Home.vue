@@ -7,15 +7,17 @@
     >
       <div class="container">
         <div class="row title">
-          <h2 class="h2">Home</h2>
+          <h2 class="h2">Welcome to Cosmoschedule</h2>
           <div class="page-breadcrumb">
-            <a>Home</a>/<a>Shop</a>/<span>2 Columns</span>
+            <router-link to="/signup">Signup</router-link>/<router-link
+              to="/users"
+              >Stylists</router-link
+            >/<router-link to="/login">Login</router-link>
           </div>
         </div>
       </div>
     </section>
     <!-- End Intro Section -->
-    <h1>{{ message }}</h1>
   </div>
 </template>
 
