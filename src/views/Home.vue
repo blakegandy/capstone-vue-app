@@ -3,7 +3,7 @@
     <!-- Intro Section -->
     <section
       class="inner-intro bg-image overlay-light parallax parallax-background1"
-      data-background-img="/img/full/hair_tools.jpeg"
+      style="background-image: url(/img/full/home.jpeg)"
     >
       <div class="container">
         <div class="row title">

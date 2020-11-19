@@ -3,41 +3,104 @@
     <!-- Intro Section -->
     <section
       class="inner-intro bg-image overlay-light parallax parallax-background1"
-      data-background-img="/img/full/hair_tools.jpeg"
+      style="background-image: url(/img/full/hair_products.jpeg)"
     >
       <div class="container">
         <div class="row title">
-          <h2 class="h2">Shop</h2>
-          <div class="page-breadcrumb">
-            <a>Home</a>/<a>Shop</a>/<span>2 Columns</span>
-          </div>
+          <h2 class="h2">Products</h2>
         </div>
       </div>
     </section>
     <!-- End Intro Section -->
-    <div class="form-group">
-      <label>Image URL:</label>
-      <input type="text" class="form-control" v-model="product.image_url" />
-    </div>
-    <div class="form-group">
-      <label>Name:</label>
-      <input type="text" class="form-control" v-model="product.name" />
-    </div>
-    <div class="form-group">
-      <label>Description:</label>
-      <input type="text" class="form-control" v-model="product.description" />
-    </div>
-    <div class="form-group">
-      <label>Price:</label>
-      <input type="decimal" class="form-control" v-model="product.price" />
-    </div>
-    <div class="form-group">
-      <label>Quantity:</label>
-      <input type="number" class="form-control" v-model="product.quantity" />
-    </div>
-    <button v-on:click="updateProduct()">Update Product</button>
-    <button v-on:click="destroyProduct()">Remove Product</button>
+    <!-- Login Section -->
+    <section id="Pricing" class="ptb ptb-sm-80">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2">
+            <div class="tabs b-lrb-none">
+              <div class="ui-tab-content">
+                <div id="tabs-1" class="plr-0"></div>
+                <div id="tabs-2" class="plr-0">
+                  <h4>Edit Product</h4>
+                  <form v-on:submit.prevent="submit()">
+                    <div class="form-field-wrapper">
+                      <label>Image URL</label>
+                      <input
+                        type="text"
+                        required=""
+                        placeholder="Enter the image URL"
+                        class="input-sm form-full"
+                        aria-required="true"
+                        v-model="product.image_url"
+                      />
+                    </div>
+                    <div class="form-field-wrapper">
+                      <label>Product Name</label>
+                      <input
+                        type="text"
+                        required=""
+                        placeholder="Enter the product name"
+                        class="input-sm form-full"
+                        aria-required="true"
+                        v-model="product.name"
+                      />
+                    </div>
+                    <div class="form-field-wrapper">
+                      <label>Description </label>
+                      <input
+                        type="text"
+                        placeholder="Enter product description"
+                        class="input-sm form-full"
+                        aria-required="true"
+                        v-model="product.description"
+                      />
+                    </div>
+                    <div class="form-field-wrapper">
+                      <label>Price</label>
+                      <input
+                        type="decimal"
+                        required=""
+                        placeholder="Enter the product price"
+                        class="input-sm form-full"
+                        aria-required="true"
+                        v-model="product.price"
+                      />
+                    </div>
+                    <div class="form-field-wrapper">
+                      <label>Quantity</label>
+                      <input
+                        type="number"
+                        placeholder="Enter Quantity"
+                        class="input-sm form-full"
+                        aria-required="true"
+                        v-model="product.quantity"
+                      />
+                    </div>
+                    <button
+                      name="submit"
+                      id="form-submit"
+                      type="submit"
+                      class="btn btn-md btn-black"
+                      v-on:click="updateProduct()"
+                    >
+                      Update Product
+                    </button>
+                    <button
+                      class="btn btn-md btn-black"
+                      v-on:click="destroyProduct()"
+                    >
+                      Delete Product
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
+  <!-- End Login Section -->
 </template>
 <script>
 import axios from "axios";

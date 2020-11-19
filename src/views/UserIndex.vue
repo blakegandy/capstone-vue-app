@@ -3,25 +3,26 @@
     <!-- Intro Section -->
     <section
       class="inner-intro bg-image overlay-light parallax parallax-background1"
-      data-background-img="/img/full/hair_tools.jpeg"
+      style="background-image: url(/img/full/salon2.jpeg)"
     >
       <div class="container">
         <div class="row title">
           <h2 class="h2">Stylists</h2>
-          <div class="page-breadcrumb">
-            <a>Home</a>/<a>Shop</a>/<span>2 Columns</span>
-          </div>
         </div>
       </div>
     </section>
     <!-- End Intro Section -->
-    <h1>Stylists</h1>
-    <input
-      type="text"
-      v-model="nameFilter"
-      placeholder="Search by name"
-      list="users"
-    />
+    <div class="container">
+      <h2></h2>
+    </div>
+    <div class="container">
+      <input
+        type="text"
+        v-model="nameFilter"
+        placeholder="Search by name"
+        list="users"
+      />
+    </div>
 
     <datalist id="users">
       <option v-for="user in users"
@@ -70,7 +71,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import Vue from "vue";
 import Vue2Filters from "vue2-filters";

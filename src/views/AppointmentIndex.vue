@@ -3,14 +3,11 @@
     <!-- Intro Section -->
     <section
       class="inner-intro bg-image overlay-light parallax parallax-background1"
-      data-background-img="/img/full/hair_tools.jpeg"
+      style="background-image: url(/img/full/salon.jpeg)"
     >
       <div class="container">
         <div class="row title">
           <h2 class="h2">Appointments</h2>
-          <div class="page-breadcrumb">
-            <a>Home</a>/<a>Shop</a>/<span>2 Columns</span>
-          </div>
         </div>
       </div>
     </section>
@@ -47,6 +44,9 @@
               <p>Date and Time: {{ formatDate(appointment.starts_at) }}</p>
               <p>Details: {{ appointment.details }}</p>
             </div>
+            <router-link :to="`/appointments/${appointment.id}/edit`"
+              >Edit appointment</router-link
+            >
           </div>
         </div>
       </div>
@@ -102,6 +102,9 @@ export default {
     },
     formatCalendarDate: function(date) {
       return moment(date).format();
+    },
+    editPush: function() {
+      this.$router.push(`/users/${this.appointment.user_id}`);
     },
   },
 };

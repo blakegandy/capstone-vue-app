@@ -3,14 +3,11 @@
     <!-- Intro Section -->
     <section
       class="inner-intro bg-image overlay-light parallax parallax-background1"
-      data-background-img="/img/full/hair_tools.jpeg"
+      style="background-image: url(/img/full/razor.jpeg)"
     >
       <div class="container">
         <div class="row title">
           <h2 class="h2">Signup</h2>
-          <div class="page-breadcrumb">
-            <a>Home</a>/<a>Shop</a>/<span>2 Columns</span>
-          </div>
         </div>
       </div>
     </section>
@@ -141,7 +138,6 @@
                       <label>Profile Picture URL</label>
                       <input
                         type="text"
-                        required=""
                         placeholder="Enter Image URL here"
                         name="signup-re-pass"
                         id="signup-re-pass"

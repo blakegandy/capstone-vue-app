@@ -3,14 +3,11 @@
     <!-- Intro Section -->
     <section
       class="inner-intro bg-image overlay-light parallax parallax-background1"
-      data-background-img="/img/full/hair_tools.jpeg"
+      style="background-image: url(/img/full/hair_tools.jpeg)"
     >
       <div class="container">
         <div class="row title">
           <h2 class="h2">Edit Profile</h2>
-          <div class="page-breadcrumb">
-            <a>Home</a>/<a>Shop</a>/<span>2 Columns</span>
-          </div>
         </div>
       </div>
     </section>
@@ -30,7 +27,6 @@
                       <label for="signup-name">First Name</label>
                       <input
                         type="text"
-                        required=""
                         placeholder="Enter your first name"
                         name="signup-name"
                         id="signup-name"
@@ -43,7 +39,6 @@
                       <label for="signup-name">Last Name</label>
                       <input
                         type="name"
-                        required=""
                         placeholder="Enter your last name"
                         name="signup-name"
                         id="signup-name"
@@ -56,7 +51,6 @@
                       <label for="signup-email">Email </label>
                       <input
                         type="text"
-                        required=""
                         placeholder="Enter your email"
                         name="signup-email"
                         id="signup-email"
@@ -69,7 +63,6 @@
                       <label for="login-email">Phone</label>
                       <input
                         type="text"
-                        required=""
                         placeholder="Enter your phone no."
                         name="signup-phone"
                         id="signup-phone"
@@ -82,7 +75,6 @@
                       <label for="signup-pass">Choose Password</label>
                       <input
                         type="password"
-                        required=""
                         placeholder="Enter Password"
                         name="signup-pass"
                         id="signup-pass"
@@ -95,7 +87,6 @@
                       <label for="signup-pass">Re-enter Password</label>
                       <input
                         type="password"
-                        required=""
                         placeholder="Enter Re-enter Password"
                         name="signup-re-pass"
                         id="signup-re-pass"
@@ -108,7 +99,6 @@
                       <label for="signup-pass">Salon</label>
                       <input
                         type="text"
-                        required=""
                         placeholder="Enter Salon name"
                         name="signup-re-pass"
                         id="signup-re-pass"
@@ -121,7 +111,6 @@
                       <label for="signup-pass">Specialty</label>
                       <input
                         type="text"
-                        required=""
                         placeholder="Enter Specialty"
                         name="signup-re-pass"
                         id="signup-re-pass"
@@ -134,7 +123,6 @@
                       <label>Profile Picture URL</label>
                       <input
                         type="text"
-                        required=""
                         placeholder="Enter Image URL here"
                         name="signup-re-pass"
                         id="signup-re-pass"
